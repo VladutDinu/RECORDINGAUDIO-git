@@ -21,18 +21,6 @@ class ProducerThread(threading.Thread):
         self.name = name
         self.myrecording = []
 
-    def reducsion(sefl, arr, slice):
-        l = len(arr) // slice
-        a = []
-        _arr = []
-        new_arr = []
-        for i in range(l-1):
-            if np.max(arr[i * slice:(i + 1) * slice]) == 0:
-                new_arr.append(1)
-            new_arr.append(10 * math.log10(np.absolute( np.max(arr[i * slice:(i + 1) * slice]))))
-            new_arr[i]=round(new_arr[i]*100)/100
-        return new_arr
-
     def run(self):
         while True:
             if not self.q.full():
@@ -43,7 +31,5 @@ class ProducerThread(threading.Thread):
                 ncols = 2
                 my_array = _arr.reshape(nrows * ncols)
                 ax = np.fft.fft(my_array)
-                #new_arr = self.reducsion(, )
-                #arr = np.fft.fftshift(new_arr)
                 SaveAudioFFT.saveAudioFFT(ax[:len(ax) // 2],ProducerThread.fs // ProducerThread.CHUNK)
 
