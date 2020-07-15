@@ -14,8 +14,8 @@ def saveAudioFFT(arr, slice):
     dt_m = now.strftime("%d-%m-%Y-%H-%M")
     dt_s = now.strftime("%d-%m-%Y-%H-%M-%S")
     os.chdir(cwd)
-    with open("output.txt", 'a') as f:
-        f.write(dt_s + "\n")
+    #with open("output.txt", 'a') as f:
+       # f.write(dt_s + "\n")
     if not os.path.exists(cwd+ '\\' + dt_d):
         os.mkdir(dt_d)
         os.chdir(cwd+ "\\" + dt_d)
